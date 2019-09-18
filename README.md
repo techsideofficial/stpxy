@@ -1,3 +1,3 @@
 # Simple (HTTP) Proxy
 
-Simple HTTP proxy pipeline service.
+Simple HTTP proxy for node.js.
