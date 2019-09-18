@@ -1,2 +1,3 @@
-# simple-proxy
-Simple proxy pipeline proxy service
+# Simple (HTTP) Proxy
+
+Simple HTTP proxy pipeline service.
