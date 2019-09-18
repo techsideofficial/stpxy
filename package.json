@@ -19,7 +19,6 @@
     "author": "Platforme",
     "files": [
         "app.js",
-        "lib/**/*.css",
         "lib/**/*.js",
         "test/**/*.js"
     ],
