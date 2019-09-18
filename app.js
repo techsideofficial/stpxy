@@ -1,5 +1,5 @@
 // requires the multiple libraries
-const http = require("http");
+const https = require("https");
 const bodyParser = require("body-parser");
 const express = require("express");
 const process = require("process");
@@ -12,9 +12,11 @@ const request = require("request");
 // by the application for serving
 const app = express();
 
-// creates the HTTP connection pool that is going
+// creates the HTTP connection pool/agent that is going
 // to be used by the proxy
-const pool = new http.Agent({
+const agent = new https.Agent({
+    protocol: "https:",
+    keepAlive: true,
     keepAliveMsecs: 30000
 });
 
@@ -53,13 +55,13 @@ app.all("*", (req, res, next) => {
                 // constructs the initial options object with the
                 // processed headers and query string
                 const options = {
+                    agent: agent,
                     baseUrl: lib.TARGET,
                     uri: req.path,
                     method: req.method,
                     headers: lib.proxyHeaders(req),
                     qs: req.query,
-                    forever: true,
-                    pool: pool
+                    forever: true
                 };
 
                 // runs the changed request with the transformed values so
