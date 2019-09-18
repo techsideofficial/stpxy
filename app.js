@@ -1,4 +1,5 @@
 // requires the multiple libraries
+const http = require("http");
 const bodyParser = require("body-parser");
 const express = require("express");
 const process = require("process");
@@ -10,6 +11,12 @@ const request = require("request");
 // builds the initial application object to be used
 // by the application for serving
 const app = express();
+
+// creates the HTTP connection pool that is going
+// to be used by the proxy
+const pool = new http.Agent({
+    keepAliveMsecs: 30000
+});
 
 // ensures that the content type is exposed in the request
 // object and that the body is parsed accordingly (JSON
@@ -52,7 +59,7 @@ app.all("*", (req, res, next) => {
                     headers: lib.proxyHeaders(req),
                     qs: req.query,
                     forever: true,
-                    pool: { maxSockets: Infinity }
+                    pool: pool
                 };
 
                 // runs the changed request with the transformed values so
