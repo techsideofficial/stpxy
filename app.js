@@ -45,14 +45,6 @@ app.all("*", (req, res, next) => {
         lib.verifyKey(req);
         await new Promise(function(resolve, reject) {
             try {
-                // normalizes the query string values so that they
-                // can be fed to the request client
-                const qs = Object.assign(
-                    ...Object.entries(req.query).map(([k, v]) => {
-                        return { [k]: v };
-                    })
-                );
-
                 // constructs the initial options object with the
                 // processed headers and query string
                 const options = {
@@ -61,7 +53,10 @@ app.all("*", (req, res, next) => {
                     uri: req.path,
                     method: req.method,
                     headers: lib.proxyHeaders(req),
-                    qs: qs,
+                    qs: req.query,
+                    qsStringifyOptions: {
+                        arrayFormat: "repeat"
+                    },
                     forever: true
                 };
 
