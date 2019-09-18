@@ -1,6 +1,5 @@
 // requires the multiple libraries
 const https = require("https");
-const bodyParser = require("body-parser");
 const express = require("express");
 const process = require("process");
 const util = require("hive-js-util");
@@ -19,12 +18,6 @@ const agent = new https.Agent({
     keepAlive: true,
     keepAliveMsecs: 30000
 });
-
-// ensures that the content type is exposed in the request
-// object and that the body is parsed accordingly (JSON
-// and URL encoding)
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 process.on("SIGINT", function() {
     process.exit();

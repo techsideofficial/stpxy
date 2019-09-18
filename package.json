@@ -36,9 +36,7 @@
         "consola": "^2.10.1",
         "express": "^4.17.1",
         "hive-js-util": "^0.2.1",
-        "request": "^2.88.0",
-        "ripe-sdk": "^1.6.43",
-        "uuid": "^3.3.3"
+        "request": "^2.88.0"
     },
     "devDependencies": {
         "eslint": "^6.4.0",
