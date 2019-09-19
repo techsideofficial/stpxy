@@ -16,7 +16,7 @@ const app = express();
 const agent = new https.Agent({
     protocol: "https:",
     keepAlive: true,
-    keepAliveMsecs: 30000
+    keepAliveMsecs: lib.PRX_KEEPALIVE
 });
 
 process.on("SIGINT", function() {

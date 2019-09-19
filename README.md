@@ -2,6 +2,13 @@
 
 Simple HTTP proxy for node.js.
 
+## Installation
+
+```bash
+npm install
+npm start
+```
+
 ## License
 
 Simple (HTTP) Proxy is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
