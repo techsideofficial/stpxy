@@ -49,7 +49,7 @@ app.all("*", (req, res, next) => {
                 // processed headers and query string
                 const options = {
                     agent: agent,
-                    baseUrl: lib.TARGET,
+                    baseUrl: lib.PRX_TARGET,
                     uri: req.path,
                     method: req.method,
                     headers: lib.proxyHeaders(req),
