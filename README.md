@@ -1,6 +1,6 @@
 # Simple (HTTP) Proxy
 
-Simple HTTP proxy for node.js.
+Simple HTTP proxy for node.js that pipelines content from back-end to front-end server with minimal buffer and minimal latency.
 
 ## Installation
 
