@@ -40,6 +40,19 @@ app.get("/info", (req, res, next) => {
     });
 });
 
+app.options("*", (req, res, next) => {
+    const headers = lib.proxyHeaders(req);
+    Object.assign(headers, {
+        "Content-Security-Policy":
+            "default-src * ws://* wss://* data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS",
+        "Access-Control-Allow-Origin": "*"
+    });
+    res.set(headers);
+    res.send();
+});
+
 app.all("*", (req, res, next) => {
     async function clojure() {
         lib.verifyKey(req);
