@@ -74,7 +74,7 @@ app.all("*", (req, res, next) => {
                 };
 
                 // runs the changed request with the transformed values so
-                // that they become compliant with the RIPE API
+                // that they become compliant with the expected API
                 request(options)
                     .pipe(res)
                     .on("finish", resolve)
