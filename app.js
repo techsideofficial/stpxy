@@ -16,7 +16,7 @@ const app = express();
 const agent = new https.Agent({
     protocol: "https:",
     keepAlive: true,
-    keepAliveMsecs: lib.PRX_KEEPALIVE
+    keepAliveMsecs: lib.conf.PRX_KEEPALIVE
 });
 
 process.on("SIGINT", function() {
@@ -62,7 +62,7 @@ app.all("*", (req, res, next) => {
                 // processed headers and query string
                 const options = {
                     agent: agent,
-                    baseUrl: lib.PRX_TARGET,
+                    baseUrl: lib.conf.PRX_TARGET,
                     uri: req.path,
                     method: req.method,
                     headers: lib.proxyHeaders(req),
@@ -87,12 +87,14 @@ app.all("*", (req, res, next) => {
     clojure().catch(next);
 });
 
-app.listen(lib.PORT, lib.HOSTNAME, () => {
-    try {
-        lib.startLogging();
-        util.Logging.info("Listening on " + lib.HOSTNAME + ":" + String(lib.PORT));
-        lib.init();
-    } catch (err) {
-        util.Logging.error(err);
-    }
-});
+(async () => {
+    await lib.start();
+    app.listen(lib.conf.PORT, lib.conf.HOST, () => {
+        try {
+            util.Logging.info("Listening on " + lib.conf.HOST + ":" + String(lib.conf.PORT));
+            lib.init();
+        } catch (err) {
+            util.Logging.error(err);
+        }
+    });
+})();
