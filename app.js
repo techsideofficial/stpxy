@@ -89,12 +89,16 @@ app.all("*", (req, res, next) => {
 
 (async () => {
     await lib.start();
-    app.listen(lib.conf.PORT, lib.conf.HOST, () => {
-        try {
-            util.Logging.info("Listening on " + lib.conf.HOST + ":" + String(lib.conf.PORT));
-            lib.init();
-        } catch (err) {
-            util.Logging.error(err);
-        }
-    });
+    try {
+        app.listen(lib.conf.PORT, lib.conf.HOST, () => {
+            try {
+                util.Logging.info("Listening on " + lib.conf.HOST + ":" + String(lib.conf.PORT));
+                lib.init();
+            } catch (err) {
+                util.Logging.error(err);
+            }
+        });
+    } finally {
+        await lib.stop();
+    }
 })();
