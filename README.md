@@ -26,4 +26,5 @@ Simple (HTTP) Proxy is currently licensed under the [Apache License, Version 2.0
 
 ## Build Automation
 
+[![Build Status](https://github.com/ripe-tech/simple-proxy/workflows/Main%20Workflow/badge.svg)](https://github.com/ripe-tech/simple-proxy/actions)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/)
