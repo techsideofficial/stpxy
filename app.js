@@ -56,7 +56,7 @@ app.options("*", (req, res, next) => {
 app.all("*", (req, res, next) => {
     async function clojure() {
         lib.verifyKey(req);
-        await new Promise(function(resolve, reject) {
+        await new Promise((resolve, reject) => {
             try {
                 // constructs the initial options object with the
                 // processed headers and query string
