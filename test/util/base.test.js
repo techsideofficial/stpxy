@@ -87,7 +87,7 @@ describe("Base", function() {
         beforeEach(async () => {
             await lib.start();
             config.conf.WHITELIST = {
-                brand: ["dummy"],
+                hello: ["world"],
                 param3: ["1", "2"]
             };
         });
@@ -110,7 +110,7 @@ describe("Base", function() {
         it("should allow requests for white list compliant param values", () => {
             lib.verifyQuery({
                 query: {
-                    brand: "dummy"
+                    hello: "world"
                 }
             });
 
@@ -122,7 +122,7 @@ describe("Base", function() {
 
             lib.verifyQuery({
                 query: {
-                    brand: "dummy",
+                    hello: "world",
                     param3: "2"
                 }
             });
@@ -133,12 +133,12 @@ describe("Base", function() {
                 async () =>
                     lib.verifyQuery({
                         query: {
-                            brand: "unknown"
+                            hello: "unknown"
                         }
                     }),
                 err => {
                     assert.strictEqual(err.name, "Error");
-                    assert.strictEqual(err.message, "Restricted value 'unknown' for param 'brand'");
+                    assert.strictEqual(err.message, "Restricted value 'unknown' for param 'hello'");
                     return true;
                 }
             );
