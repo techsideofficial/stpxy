@@ -56,7 +56,7 @@ app.options("*", (req, res, next) => {
 app.all("*", (req, res, next) => {
     async function clojure() {
         lib.verifyKey(req);
-        lib.verifyBrand(req);
+        lib.verifyQuery(req);
         await new Promise((resolve, reject) => {
             try {
                 // constructs the initial options object with the
