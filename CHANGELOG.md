@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Added a brand whitelisting mechanism to incoming requests
+* Added a query param whitelisting mechanism for incoming requests
 
 ### Changed
 
