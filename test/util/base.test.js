@@ -83,42 +83,62 @@ describe("Base", function() {
         });
     });
 
-    describe("#verifyBrand", function() {
+    describe("#verifyQuery", function() {
         beforeEach(async () => {
             await lib.start();
+            config.conf.WHITELIST = {
+                brand: ["dummy"],
+                param3: ["1", "2"]
+            };
         });
 
-        it("should allow non-brand specific requests", () => {
-            lib.verifyBrand({
+        it("should allow requests with no query params", () => {
+            lib.verifyQuery({
                 query: {}
             });
         });
 
-        it("should allow requests for white listed brands", () => {
-            const whiteList = config.conf.WHITELIST;
-            config.conf.WHITELIST = ["dummy"];
-            try {
-                lib.verifyBrand({
-                    query: {
-                        brand: "dummy"
-                    }
-                });
-            } finally {
-                config.conf.WHITELIST = whiteList;
-            }
+        it("should allow requests with no white listed params", () => {
+            lib.verifyQuery({
+                query: {
+                    param1: "value1",
+                    param2: "value2"
+                }
+            });
         });
 
-        it("should fail for non white listed brands", () => {
-            assert.rejects(
-                () =>
-                    lib.verifyBrand({
+        it("should allow requests for white list compliant param values", () => {
+            lib.verifyQuery({
+                query: {
+                    brand: "dummy"
+                }
+            });
+
+            lib.verifyQuery({
+                query: {
+                    param3: "1"
+                }
+            });
+
+            lib.verifyQuery({
+                query: {
+                    brand: "dummy",
+                    param3: "2"
+                }
+            });
+        });
+
+        it("should fail for non white list compliant param values", async () => {
+            await assert.rejects(
+                async () =>
+                    lib.verifyQuery({
                         query: {
                             brand: "unknown"
                         }
                     }),
                 err => {
                     assert.strictEqual(err.name, "Error");
-                    assert.strictEqual(err.message, "Invalid 'unknown' brand");
+                    assert.strictEqual(err.message, "Restricted value 'unknown' for param 'brand'");
                     return true;
                 }
             );
