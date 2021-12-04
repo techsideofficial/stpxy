@@ -55,8 +55,14 @@ app.options("*", (req, res, next) => {
 
 app.all("*", (req, res, next) => {
     async function clojure() {
+        // makes sure that in case there's a secret key defined then
+        // it must be properly set in the request
         lib.verifyKey(req);
+
+        // makes sure that if there's GET query validation required
+        // then it's ensured and exceptions are thrown in case of errors
         lib.verifyQuery(req);
+
         await new Promise((resolve, reject) => {
             try {
                 // constructs the initial options object with the
