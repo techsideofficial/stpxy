@@ -11,14 +11,15 @@ npm start
 
 ## Configuration
 
-| Name              | Type  | Description                                                                                                                                 |
-| ----------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **HOSTNAME**      | `str` | The address of the server that serves the app (defaults to `127.0.0.1`).                                                                    |
-| **PORT**          | `int` | The port the server will listen at (defaults to `3000`).                                                                                    |
-| **KEY**           | `str` | Secret key that should be passed in protected calls so that the server side "trusts" the client side (authentication) (defaults to `null`). |
-| **TARGET**        | `str` | The target server that the server will proxy to (defaults to `https://app.platforme.com/`).                                                 |
-| **PRX_TARGET**    | `str` | The same as `TARGET`.                                                                                                                       |
-| **PRX_KEEPALIVE** | `int` | The number of milliseconds to keep the back-end connections alive in the connection pool (defaults to `600000`)                             |
+| Name              | Type   | Description                                                                                                                                     |
+| ----------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **HOSTNAME**      | `str`  | The address of the server that serves the app (defaults to `127.0.0.1`).                                                                        |
+| **PORT**          | `int`  | The port the server will listen at (defaults to `3000`).                                                                                        |
+| **KEY**           | `str`  | Secret key that should be passed in protected calls so that the server side "trusts" the client side (authentication) (defaults to `null`).     |
+| **TARGET**        | `str`  | The target server that the server will proxy to (defaults to `https://app.platforme.com/`).                                                     |
+| **PRX_TARGET**    | `str`  | The same as `TARGET`.                                                                                                                           |
+| **PRX_KEEPALIVE** | `int`  | The number of milliseconds to keep the back-end connections alive in the connection pool (defaults to `600000`)                                 |
+| **WHITELIST**     | `list` | A list of query params and allowed values. Query params not in the list are not checked. (e.g. `WHITELIST="param1:val1,val2;param2:val1,val2"`) |
 
 ## License
 
