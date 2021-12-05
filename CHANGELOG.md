@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Bumped packages
+* De-bumped eslint package, due to error
 
 ### Fixed
 
