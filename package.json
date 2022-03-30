@@ -34,7 +34,6 @@
         "upgrade": "npx sort-package-json && ncu -u"
     },
     "dependencies": {
-        "body-parser": "^1.19.2",
         "consola": "^2.15.3",
         "express": "^4.17.1",
         "hive-js-util": "^0.4.0",

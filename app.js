@@ -6,7 +6,6 @@ const util = require("hive-js-util");
 const info = require("./package");
 const lib = require("./lib");
 const request = require("request");
-const bodyParser = require("body-parser");
 
 // builds the initial application object to be used
 // by the application for serving
@@ -33,7 +32,7 @@ process.on("exit", () => {
     lib.destroy();
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/info", (req, res, next) => {
     res.json({
