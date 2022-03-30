@@ -32,6 +32,13 @@ process.on("exit", () => {
     lib.destroy();
 });
 
+// parse request payloads of any type
+app.use(
+    express.raw({
+        type: () => true
+    })
+);
+
 app.get("/info", (req, res, next) => {
     res.json({
         name: info.name,
@@ -74,6 +81,7 @@ app.all("*", (req, res, next) => {
                     method: req.method,
                     headers: lib.proxyHeaders(req),
                     qs: req.query,
+                    body: Buffer.isBuffer(req.body) ? req.body : undefined,
                     qsStringifyOptions: {
                         arrayFormat: "repeat"
                     },
