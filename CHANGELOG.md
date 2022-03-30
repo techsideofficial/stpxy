@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+*
+
+### Changed
+
+*
+
+### Fixed
+
+*
+
+## [0.2.0] - 2022-03-30
+
+### Added
+
 * Added a query param whitelisting mechanism for incoming requests (`WHITELIST`)
 * Passing request body in the requests
 
@@ -16,7 +30,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Bumped packages
 * De-bumped eslint package, due to error
-
-### Fixed
-
-*
