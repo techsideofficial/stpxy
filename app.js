@@ -6,6 +6,7 @@ const util = require("hive-js-util");
 const info = require("./package");
 const lib = require("./lib");
 const request = require("request");
+const bodyParser = require("body-parser");
 
 // builds the initial application object to be used
 // by the application for serving
@@ -31,6 +32,8 @@ process.on("exit", () => {
     util.Logging.info("Exiting on user's request");
     lib.destroy();
 });
+
+app.use(bodyParser.json());
 
 app.get("/info", (req, res, next) => {
     res.json({
@@ -74,6 +77,7 @@ app.all("*", (req, res, next) => {
                     method: req.method,
                     headers: lib.proxyHeaders(req),
                     qs: req.query,
+                    body: JSON.stringify(req.body),
                     qsStringifyOptions: {
                         arrayFormat: "repeat"
                     },
