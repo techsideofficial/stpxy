@@ -87,6 +87,8 @@ app.all("*", (req, res, next) => {
                     forever: true
                 };
 
+                console.info(`'${req.body}'`);
+
                 // in case there's a valid body defined for the request
                 // then sets the body in the options
                 if (req.body && Buffer.isBuffer(req.body)) {
