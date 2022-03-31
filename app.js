@@ -92,7 +92,7 @@ app.all("*", (req, res, next) => {
 
                 // in case there's a valid body defined for the request
                 // then sets the body in the options
-                if (req.body && Buffer.isBuffer(req.body)) {
+                if (req.body && Buffer.isBuffer(req.body) && req.body.length > 0) {
                     options.body = req.body;
                 }
 
