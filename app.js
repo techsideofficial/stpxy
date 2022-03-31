@@ -32,7 +32,6 @@ process.on("exit", () => {
     lib.destroy();
 });
 
-// parse request payloads of any type
 app.use(
     express.raw({
         type: () => true
@@ -81,12 +80,17 @@ app.all("*", (req, res, next) => {
                     method: req.method,
                     headers: lib.proxyHeaders(req),
                     qs: req.query,
-                    body: Buffer.isBuffer(req.body) ? req.body : undefined,
                     qsStringifyOptions: {
                         arrayFormat: "repeat"
                     },
                     forever: true
                 };
+
+                // in case there's a valid body defined for the request
+                // then sets the body in the options
+                if (req.body && Buffer.isBuffer(req.body)) {
+                    options.body = req.body;
+                }
 
                 // runs the changed request with the transformed values so
                 // that they become compliant with the expected API
