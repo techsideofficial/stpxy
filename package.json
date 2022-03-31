@@ -1,6 +1,6 @@
 {
     "name": "simple-proxy",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Simple HTTP proxy for node.js",
     "keywords": [
         "http",
