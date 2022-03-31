@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+*
+
+## [0.2.4] - 2022-03-31
+
+### Fixed
+
 * Issue related with empty body payloads and forwarding
 
 ## [0.2.3] - 2022-03-31
