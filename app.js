@@ -34,7 +34,8 @@ process.on("exit", () => {
 
 app.use(
     express.raw({
-        type: () => true
+        type: () => true,
+        limit: "50mb"
     })
 );
 
