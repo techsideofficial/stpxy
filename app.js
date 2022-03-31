@@ -88,6 +88,7 @@ app.all("*", (req, res, next) => {
                 };
 
                 console.info(`'${req.body}'`);
+                console.info(req.body);
 
                 // in case there's a valid body defined for the request
                 // then sets the body in the options
