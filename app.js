@@ -109,7 +109,7 @@ app.all("*", (req, res, next) => {
     try {
         app.listen(lib.conf.PORT, lib.conf.HOST, () => {
             try {
-                util.Logging.info(`Running in Node.js ${process.version}`);
+                util.Logging.info(`Running v${info.version} in Node.js ${process.version}`);
                 util.Logging.info(`Listening on ${lib.conf.HOST}:${String(lib.conf.PORT)}`);
                 lib.init();
             } catch (err) {
