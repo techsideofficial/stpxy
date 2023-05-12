@@ -1,4 +1,4 @@
-FROM hivesolutions/alpine_dev:latest
+FROM node:lts-alpine
 
 LABEL version="1.0"
 LABEL maintainer="Platforme <development@platforme.com>"
