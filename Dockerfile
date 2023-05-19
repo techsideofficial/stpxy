@@ -16,7 +16,7 @@ ADD lib /app/lib
 
 WORKDIR /app
 
-RUN apk update && apk add --no-cache nodejs npm
-RUN npm install
+RUN apk update &&\
+    npm install
 
 CMD ["/usr/bin/node", "/app/app.js"]
