@@ -19,4 +19,4 @@ WORKDIR /app
 RUN apk update &&\
     npm install
 
-CMD ["/usr/bin/node", "/app/app.js"]
+CMD ["npm", "start"]
